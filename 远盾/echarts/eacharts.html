@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <!-- 引入 echarts.js -->
+    <!-- <link href="css/globle.css" rel="stylesheet">
+    <script src="./ditujs/echarts.min.js"></script>
+    <script src="./ditujs/echarts.js"></script> -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/num.js"></script>
+    <!-- <script src="./node_modules/echarts/map/js/china.js"></script> -->
+
+</head>
+<body style="background:#282828; ">
+        <!-- 勿动 -->
+        <!-- <iframe style="display: none;" src="./yuandong.html" height="400" width="700" name="demo" frameborder="1" scrolling="auto" sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts"  ></iframe> -->
+         <!-- 勿动 -->
+
+
+
+         <div class="waicheng">
+          <!-- images/1.png -->
+          <img id="img1" class="transiticls top1" style="z-index: 99;width:99.7%;" src="images/1.png" alt="">
+          <img id="img2" class="transiticls top2" src="images/2.png" style="width:99.7%;" alt="">
+
+          <iframe id="yuandong"  class="transiticls  top3" src="./yuandong/yuandong.html"  width="99.7%" name="demo" frameborder="1" scrolling="no" sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts"  ></iframe>
+
+         <iframe id="yuandun" class="transiticls top4" src="./yuandun/yuandun.html"  width="99.7%" name="demo" frameborder="1" scrolling="no" sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts"  ></iframe>
+
+          <iframe id="shiji" class="transiticls top5" src="./shiji/shiji.html"  width="99.7%" name="demo" frameborder="1" scrolling="no" sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts"  ></iframe>
+         </div>
+        
+</body>
+
+<style type="text/css">
+    body{overflow: hidden;}
+    .waicheng{
+        height:925px;overflow: hidden;display: block;position: relative;
+    }
+    .transiticls{
+        position: absolute;
+        transition: top 7s linear;
+}
+.top1{top:0px;border: 1px solid #fff;border-radius: 3px;}
+.top2{top:930px;border: 1px solid #fff;border-radius: 3px;}
+.top3{top:1860px;}
+.top4{top:2790px;}
+.top5{top:3720px;}
+
+</style>
+
+
+
+<script type="text/javascript">
+        // alert('width:'+document.body.clientWidth+'----height:'+document.body.clientHeight);
+    // function zishiying(){
+    //         document.getElementById('yuandong').style.height=   document.body.clientHeight+"px";
+    //         document.getElementById('yuandun').style.height=    document.body.clientHeight+"px";
+    //         document.getElementById('shiji').style.height=      document.body.clientHeight+"px";
+    //     };
+    $(function(){
+      var height = $(document).height() - 17;
+
+      $("#yuandong,#yuandun,#shiji").attr("height",height + 'px');
+      $(".waicheng,#img1,#img2").css("height",height + 'px');
+      var img = `<img id="img1" class="transiticls top1" style="z-index: 99;width:99.7%;" src="../gif/1.gif?+${Math.random()}" alt="">`
+
+      $(".waicheng").prepend(img);
+      setInterval(function() {
+            $(".waicheng").attr('src',img);
+        }, 1000);
+    })
+
+
+
+        var fuifcls = 1;
+     setInterval( function() {
+        var topindex = 930; var ifcls = 3;
+        if (fuifcls == 1) {
+           console.log('111===');
+          $("#img1").css({'z-index':'99','transition': 'top 3s linear',});
+          
+           $("#img2").css({'z-index':'0',});
+           $("#yuandong").css({'z-index':'0',});
+           $("#shiji").css({'z-index':'0',});
+           $("#yuandun").css({'z-index':'0',});
+
+           document.getElementById('img1').style.top = topindex*0 +"px";
+           document.getElementById('img2').style.top = topindex*1 +"px";
+           document.getElementById('yuandun').style.top = topindex*1 +"px";
+           document.getElementById('yuandong').style.top = topindex*1 +"px";
+           document.getElementById('shiji').style.top = topindex*1 +"px";
+            ++fuifcls;
+
+
+       }else if(fuifcls == 2){
+        console.log('222===');
+           $("#img2").css({'z-index':'99','transition': 'top 3s linear',});
+          
+           $("#img1").css({'z-index':'0',});
+           $("#yuandong").css({'z-index':'0',});
+           $("#shiji").css({'z-index':'0',});
+           $("#yuandun").css({'z-index':'0',});
+
+           document.getElementById('img2').style.top = topindex*0 +"px";
+           document.getElementById('img1').style.top = topindex*1 +"px";
+           document.getElementById('yuandun').style.top = topindex*1 +"px";
+           document.getElementById('yuandong').style.top = topindex*1 +"px";
+           document.getElementById('shiji').style.top = topindex*1 +"px";
+            ++fuifcls;
+
+       }else if(fuifcls == 3){
+        console.log('333===');
+          $("#yuandun").css({'z-index':'99','transition': 'top 3s linear',});
+           $("#yuandong").css({'z-index':'0',});
+           $("#shiji").css({'z-index':'0',});
+           $("#img1").css({'z-index':'0',});
+           $("#img2").css({'z-index':'0',});
+
+
+           document.getElementById('yuandun').style.top = topindex*0 +"px";
+           document.getElementById('yuandong').style.top = topindex*1 +"px";
+           document.getElementById('shiji').style.top = topindex*1 +"px";
+           document.getElementById('img1').style.top = topindex*1 +"px";
+           document.getElementById('img2').style.top = topindex*1 +"px";
+           
+            ++fuifcls;
+
+
+           
+       }else if(fuifcls == 4){
+        console.log('444===');
+          $("#shiji").css({'z-index':'99','transition': 'top 3s linear',});
+           $("#yuandun").css({'z-index':'0',});
+           $("#yuandong").css({'z-index':'0',});
+           $("#img1").css({'z-index':'0',});
+           $("#img2").css({'z-index':'0',});
+
+           document.getElementById('shiji').style.top = topindex*0 +"px";
+           document.getElementById('yuandong').style.top = topindex*1 +"px";
+           document.getElementById('yuandun').style.top = topindex*1 +"px";
+           document.getElementById('img1').style.top = topindex*1 +"px";
+           document.getElementById('img2').style.top = topindex*1 +"px";
+           ++fuifcls;
+       }else if(fuifcls == 5){
+           console.log('555===');
+           $("#yuandong").css({'z-index':'99','transition': 'top 3s linear',});
+           $("#yuandun").css({'z-index':'0',});
+           $("#shiji").css({'z-index':'0',});
+           $("#img1").css({'z-index':'0',});
+           $("#img2").css({'z-index':'0',});
+
+           document.getElementById('yuandong').style.top = topindex*0 +"px";
+           document.getElementById('yuandun').style.top = topindex*1 +"px";
+           document.getElementById('shiji').style.top = topindex*1 +"px";
+           document.getElementById('img1').style.top = topindex*1 +"px";
+           document.getElementById('img2').style.top = topindex*1 +"px";
+           ++fuifcls;
+           fuifcls = 1;
+       }else{
+        console.log(fuifcls+'else');
+        fuifcls = 1;
+       }
+       console.log(fuifcls+'--------------')
+
+        },10000);
+
+</script>
+</html>

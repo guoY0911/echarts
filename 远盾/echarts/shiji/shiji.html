@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>四季车服</title>
+    <!-- 引入 echarts.js -->
+    <link href="css/globle.css" rel="stylesheet">
+    <script src="./ditujs/echarts.min.js"></script>
+    <script src="./ditujs/echarts.js"></script>
+    <script src="../js/shandongData.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/num.js"></script>
+    <script src="../node_modules/echarts/map/js/china.js"></script>
+</head>
+<body style="background:#282828; ">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div class="bodycls">
+        <div class="div_left">
+
+            <!-- 四季车服 -->
+            <div class="div_moni displaycls_dong">
+            <h2 class="titcls displaycls_ji">四季车服</h2>
+                
+                    <p> 
+                        <span>累计销售收入</span>
+                        <div class="dataNums"  id="dataNums1"> </div>
+                    <p>
+                        <span>2019年销售收入</span>
+                        <div class="dataNums"   id="dataNums2"> </div>
+                    </p>
+                    <p>
+                        <span>当月销售收入</span>
+                        <div class="dataNums"   id="dataNums3"> </div>
+                    </p>
+                    <p>
+                        <span>共享洗车累计充值金额</span>
+                        <div class="dataNums"  id="dataNums4"> </div>
+                    </p>
+                    <p>
+                        <span>共享洗车累计消费金额</span>
+                        <div class="dataNums"  id="dataNums5"> </div>
+                    </p>
+                    <p>
+                        <span>洗车用户累计注册量</span>
+                        <div class="dataNums" id="dataNums6"> </div>
+                    </p>
+                    <p>
+                        <span>连锁店数量</span>
+                        <div class="dataNums afterjia" id="dataNums7"> </div>
+                    </p>
+            </div>
+
+
+
+            <div class="ditu_cls" id="mainmap">
+                
+            </div>
+            <div id="main" style="width: 800px;height:300px;margin: 80px 0 0 20%;"></div>
+        </div>
+
+
+        <!-- 四季 -->
+        <div class="div_right displaycls_ji">
+         <p class="ul_titi2" >当月销售收入TOP5</p>
+                  <div style="color:#fff;position: relative;margin-top: 10px;">
+                <ul class="line_ul_yi">
+                    <li>名次</li>
+                    <li>保险公司</li>
+                    <li>收入</li>
+                    <li>-</li>
+                    <li>-</li>
+                </ul>
+                <ul class="line_ul_shen">
+                    <li>1</li>
+                    <li>鼎和</li>
+                    <li>5316048</li>
+                </ul>
+                <ul class="line_ul_qian">
+                    <li>2</li>
+                    <li>华安</li>
+                    <li>3401584</li>
+                </ul>
+                <ul class="line_ul_shen">
+                    <li>3</li>
+                    <li>永城</li>
+                    <li>698880</li>
+                </ul>
+                <ul class="line_ul_qian">
+                    <li>4</li>
+                    <li>平安</li>
+                    <li>434825</li>
+                </ul>
+                <ul class="line_ul_shen">
+                    <li>5</li>
+                    <li>天平</li>
+                    <li>151688</li>
+                </ul>
+            </div>
+                <p class="ul_titi2" >洗车交易量TOP10</p>
+              <div style="position: relative;margin-top: 10px;">
+                <ul class="line_ul_san">
+                    <li>名次</li>
+                    <li>编号</li>
+                    <li>网点</li>
+                    <li>交易额</li>
+                    <li>-</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>1</p></li>
+                    <li>20</li>
+                    <li>林景山庄</li>
+                    <li>7655</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>2</p></li>
+                    <li>17</li>
+                    <li>中润四期</li>
+                    <li>6573</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>3</p></li>
+                    <li>42</li>
+                    <li>美凯龙东</li>
+                    <li>5218</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>4</p></li>
+                    <li>22</li>
+                    <li>美凯龙西</li>
+                    <li>5755</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>5</p></li>
+                    <li>15</li>
+                    <li>南苑小区</li>
+                    <li>4988</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>6</p></li>
+                    <li>7</li>
+                    <li>龙奥天街</li>
+                    <li>4901</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>7</p></li>
+                    <li>38</li>
+                    <li>环保厅</li>
+                    <li>4568</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>8</p></li>
+                    <li>39</li>
+                    <li>现代逸城</li>
+                    <li>4499</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>9</p></li>
+                    <li>41</li>
+                    <li>长清商业街</li>
+                    <li>4156</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>10</p></li>
+                    <li>11</li>
+                    <li>阳光100</li>
+                    <li>3985</li>
+                </ul>
+                </div>
+                <!--  -->
+                <p class="ul_titi2" >连锁门店收入TOP10</p>
+              <div style="position: relative;margin-top: 10px;">
+                <ul class="line_ul_san">
+                    <li>名次</li>
+                    <li>门店名称</li>
+                    <li>收入</li>
+                    <li>进店台次</li>
+                    <li>承修台次</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>1</p></li>
+                    <li>济南旗舰店</li>
+                    <li>863486</li>
+                    <li>263</li>
+                    <li>252</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>2</p></li>
+                    <li>济南奥瑞店</li>
+                    <li>790546</li>
+                    <li>183</li>
+                    <li>158</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>3</p></li>
+                    <li>济南通泰店</li>
+                    <li>675893</li>
+                    <li>155</li>
+                    <li>136</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>4</p></li>
+                    <li>东营胜强店</li>
+                    <li>610869</li>
+                    <li>148</li>
+                    <li>112</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>5</p></li>
+                    <li>青岛金瑞店</li>
+                    <li>573585</li>
+                    <li>121</li>
+                    <li>106</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>6</p></li>
+                    <li>胶州政通店</li>
+                    <li>568425</li>
+                    <li>149</li>
+                    <li>129</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>7</p></li>
+                    <li>泰安青云店</li>
+                    <li>486850</li>
+                    <li>226</li>
+                    <li>210</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>8</p></li>
+                    <li>桓台隆源店</li>
+                    <li>402853</li>
+                    <li>282</li>
+                    <li>242</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>9</p></li>
+                    <li>莱芜威美万豪店</li>
+                    <li>390250</li>
+                    <li>169</li>
+                    <li>152</li>
+                </ul>
+                <ul class="line_ul_san">
+                    <li><p>10</p></li>
+                    <li>济阳华通店</li>
+                    <li>358546</li>
+                    <li>247</li>
+                    <li>226</li>
+                </ul>
+                </div>
+                <!--  -->
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+    
+   $(function(){
+    var numbers  = 74873000;
+    var numbers2 = 40974000;
+    var numbers3 = 10075224;
+    var numbers4 = 1141354;
+    var numbers5 = 817788;
+    var numbers6 = 22716;
+    var numbers7 = 227;
+        $("#dataNums1").rollNumDaq({
+            deVal:numbers,
+             height:30,
+             divid:dataNums1,
+             trues:true,
+        });
+         $("#dataNums2").rollNumDaq({
+            deVal:numbers2,
+             height:60,
+              divid:dataNums2,
+             trues:true,
+        });
+          $("#dataNums3").rollNumDaq({
+            deVal:numbers3,
+             height:90,
+              divid:dataNums3,
+             trues:true,
+        });
+          $("#dataNums4").rollNumDaq({
+            deVal:numbers4,
+             height:120,
+              divid:dataNums4,
+             trues:true,
+        });
+          $("#dataNums5").rollNumDaq({
+            deVal:numbers5,
+             height:150,
+              divid:dataNums5,
+             trues:true,
+        });
+          $("#dataNums6").rollNumDaq({
+            deVal:numbers6,
+             height:180,
+              divid:dataNums6,
+             trues:true,
+        });
+          $("#dataNums7").rollNumDaq({
+            deVal:numbers7,
+             height:180,
+              divid:dataNums7,
+             trues:true,
+        });
+    });
+   var numbers  = 74873000;
+    var numbers2 = 40974000;
+    var numbers3 = 10075224;
+    var numbers4 = 1141354;
+    var numbers5 = 817788;
+    var numbers6 = 22716;
+    var numbers7 = 227;
+
+function dizeng(){
+        numbers += Math.floor((Math.random()*200)+1);
+        numbers2 += Math.floor((Math.random()*200)+1);
+        numbers3+= Math.floor((Math.random()*200)+1);
+        numbers4 += Math.floor((Math.random()*200)+1);
+        numbers5 += Math.floor((Math.random()*100)+1);
+        numbers6 += Math.floor((Math.random()*100)+1);
+        numbers7 += Math.floor((Math.random()*10)+1);
+    };
+ setInterval(function() {
+    console.log(numbers)
+  
+        $("#dataNums1").rollNumDaq({
+            deVal:numbers,
+            height:30,
+            divid:dataNums1,
+             trues:false,
+        });
+
+
+  
+        $("#dataNums2").rollNumDaq({
+            deVal:numbers2,
+            height:60,
+            divid:dataNums2,
+             trues:false,
+        });
+
+
+  
+        $("#dataNums3").rollNumDaq({
+            deVal:numbers3,
+            height:90,
+            divid:dataNums3,
+             trues:false,
+        });
+
+
+  
+        $("#dataNums4").rollNumDaq({
+            deVal:numbers4,
+            height:120,
+            divid:dataNums4,
+             trues:false,
+        });
+
+
+  
+        $("#dataNums5").rollNumDaq({
+            deVal:numbers5,
+            height:150,
+            divid:dataNums5,
+             trues:false,
+        });
+
+
+  
+        $("#dataNums6").rollNumDaq({
+            deVal:numbers6,
+            height:180,
+            divid:dataNums6,
+             trues:false,
+        });
+
+  
+        $("#dataNums7").rollNumDaq({
+            deVal:numbers7,
+            height:180,
+            divid:dataNums7,
+             trues:false,
+        });
+        this.dizeng();
+   },5000);
+
+    function randomn(n) {
+      if (n > 21) return null
+      return parseInt((Math.random() + 1) * Math.pow(10,n-1))
+    }
+
+
+
+
+ 
+
+
+
+// 地图
+   var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption(options);
+
+
+
+echarts.registerMap('shandongData', shandongData);     //shanghaiJson名称取自shanghai.js里的var  shanghaiJson变量名
+var myChart = echarts.init(document.getElementById('mainmap'));
+   var geoCoordMap = {
+            '济南市':[117.1582,36.8701],
+            '烟台市':[120.7397,37.5128],
+            '临沂市':[118.3118,35.2936],
+            '潍坊市':[119.0918,36.524],
+            '青岛市':[120.4651,36.3373],
+            '菏泽市':[115.6201,35.2057],
+            '济宁市':[116.8286,35.3375],
+            '德州市':[116.6858,37.2107],
+            '滨州市':[117.8174,37.4963],
+            '聊城市':[115.9167,36.4032],
+            '东营市':[118.7073,37.5513],
+            '泰安市':[117.0264,36.0516],
+            '威海市':[121.9482,37.1393],
+            '日照市':[119.2786,35.5023],
+            '淄博市':[118.0371,36.6064],
+            '枣庄市':[117.323,34.8926],
+            '莱芜市':[117.6526,36.2714],
+};
+ 
+var BJData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '烟台市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '临沂市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '潍坊市',
+        value: 80
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '青岛市',
+        value: 70
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '菏泽市',
+        value: 60
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '济宁市',
+        value: 50
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '德州市',
+        value: 40
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '滨州市',
+        value: 30
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '聊城市',
+        value: 20
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '东营市',
+        value: 10
+    }]
+];
+ 
+var SHData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '泰安市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '威海市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '日照市',
+        value: 80
+    }]
+];
+ 
+var GZData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '淄博市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '枣庄市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '莱芜市',
+        value: 90
+    }]
+];
+ 
+var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
+ 
+var convertData = function(data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i];
+        var fromCoord = geoCoordMap[dataItem[0].name];
+        var toCoord = geoCoordMap[dataItem[1].name];
+        if (fromCoord && toCoord) {
+            res.push([{
+                coord: fromCoord
+            }, {
+                coord: toCoord
+            }]);
+        }
+    }
+    return res;
+};
+ 
+var color = ['#ff9800', '#ff9800', '#ff9800'];// 00BFFF 48D1CC FFD700
+var series = [];
+[
+    ['济南市', BJData],
+    ['济南市', SHData],
+    ['济南市', GZData]
+].forEach(function(item, i) {
+    series.push(
+    {
+        name: ' 分公司',
+        type: 'lines',
+        zlevel: 1,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.7,
+            color: '#fff',
+            symbolSize: 3
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 0,
+                curveness: 0.2
+            }
+        },
+        data: convertData(item[1])
+    }, {
+        name: '',//填写上后 鼠标移动到线上会显示提示框
+        type: 'lines',
+        zlevel: 2,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: planePath,
+            symbolSize: 15
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 1,
+                opacity: 0.4,
+                curveness: 0.2
+            }
+        },
+        data: convertData(item[1])
+    }, {
+        name: '提示',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            normal: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: function(val) {
+            return val[2] / 8;
+        },
+        itemStyle: {
+            normal: {
+                color: color[i]
+            }
+        },
+        data: item[1].map(function(dataItem) {
+            return {
+                name: dataItem[1].name,
+                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+            };
+        })
+    }
+
+    );
+});
+ 
+option = {
+    // backgroundColor: '#FFFFFF',
+    title: {
+        text: '一站式汽车O2O服务平台',
+        subtext: '',
+        left: 'center',
+        textStyle: {
+            color: '#808080',
+            size: '20px'
+        }
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        top: 'bottom',
+        left: 'right',
+        data: ['总公司', '分公司', '分公司'],
+        textStyle: {
+            color: '#fff'
+        },
+        selectedMode: 'single'
+    },
+    geo: {
+        map: 'shandongData',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#FFFAF0',
+                borderColor: '#191970'
+            },
+            emphasis: {
+                areaColor: '#F5F5F5'
+            }
+        },
+        regions: [{
+            name: '济南市',
+            itemStyle: {
+                areaColor: '#00bcd4',
+                color: '#ff9800'
+            }
+        }]
+    },
+    series: series
+};
+myChart.setOption(option);
+</script>
+</body>
+</html>

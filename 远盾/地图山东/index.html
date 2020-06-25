@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <!-- <link href="css/globle.css" rel="stylesheet"> -->
+   <script src="./echarts.min.js"></script>
+   <script src="./shandongData.js"></script>
+</head>
+<body>
+	<div id="mapChart" style="width:100%;height:800px;"></div>
+</body>
+<script>
+echarts.registerMap('shandongData', shandongData);     //shanghaiJson名称取自shanghai.js里的var  shanghaiJson变量名
+var myChart = echarts.init(document.getElementById('mapChart'));
+
+    var geoCoordMap = {
+    		'济南市':[117.1582,36.8701],
+            '烟台市':[120.7397,37.5128],
+			'临沂市':[118.3118,35.2936],
+			'潍坊市':[119.0918,36.524],
+			'青岛市':[120.4651,36.3373],
+			'菏泽市':[115.6201,35.2057],
+			'济宁市':[116.8286,35.3375],
+			'德州市':[116.6858,37.2107],
+			'滨州市':[117.8174,37.4963],
+			'聊城市':[115.9167,36.4032],
+			'东营市':[118.7073,37.5513],
+			'泰安市':[117.0264,36.0516],
+			'威海市':[121.9482,37.1393],
+			'日照市':[119.2786,35.5023],
+			'淄博市':[118.0371,36.6064],
+			'枣庄市':[117.323,34.8926],
+			'莱芜市':[117.6526,36.2714],
+};
+ 
+var BJData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '烟台市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '临沂市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '潍坊市',
+        value: 80
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '青岛市',
+        value: 70
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '菏泽市',
+        value: 60
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '济宁市',
+        value: 50
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '德州市',
+        value: 40
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '滨州市',
+        value: 30
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '聊城市',
+        value: 20
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '东营市',
+        value: 10
+    }]
+];
+ 
+var SHData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '泰安市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '威海市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '日照市',
+        value: 80
+    }]
+];
+ 
+var GZData = [
+    [{
+        name: '济南市'
+    }, {
+        name: '淄博市',
+        value: 95
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '枣庄市',
+        value: 90
+    }],
+    [{
+        name: '济南市'
+    }, {
+        name: '莱芜市',
+        value: 90
+    }]
+];
+
+var data2 = [
+    {name: '淄博市', value: 9},
+    {name: '枣庄市', value: 12},
+    {name: '莱芜市', value: 12},
+]
+
+var planePath = 'path://M602.69 709.22l32.45-289.83 155.2-0.17 71.61 105.46 64.89 32.58-0.32 151.96zM852.39 510.6l-62.05-91.38-155.2 0.17-10.19 91.21zM874.29 510.6l-74.35-109.51-181.03 0.2-36.48 326.05H944.6l0.4-181.25-70.71-35.49z m34.15 180.49l-285.46-0.01 28.36-253.58 129.41-0.15 63.56 93.61 5.29 7.79 8.42 4.23 50.66 25.44-0.24 122.67zM618.71 219.84H111.2c-20.02 0-36.24 16.22-36.24 36.24v435c0 20.03 16.22 36.26 36.24 36.26h507.48c20.02 0 36.27-16.22 36.27-36.26v-435c0-20.01-16.22-36.24-36.24-36.24zM691.22 437.43h36.24v73.16h-36.24zM183.28 219.44h36.24v504.85h-36.24zM292.47 219.44h36.24v504.85h-36.24zM401.65 219.44h36.24v504.85h-36.24zM510.83 219.44h36.24v504.85h-36.24zM781.81 710.1m-90.62 0a90.62 90.62 0 1 0 181.24 0 90.62 90.62 0 1 0-181.24 0ZM256.2 710.1m-90.62 0a90.62 90.62 0 1 0 181.24 0 90.62 90.62 0 1 0-181.24 0ZM763.68 710.1a18.13 18.12 0 1 0 36.26 0 18.13 18.12 0 1 0-36.26 0ZM238.06 710.1c0 10.01 8.12 18.12 18.13 18.12s18.11-8.11 18.11-18.12c0-10.01-8.1-18.12-18.11-18.12-10 0-18.13 8.12-18.13 18.12zM944.92 582.34H908.7c-10.01 0-18.11 8.11-18.11 18.12 0 10.01 8.1 18.12 18.11 18.12h36.14l0.08-36.24z'
+
+
+// var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
+
+var convertData = function(data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i];
+        var fromCoord = geoCoordMap[dataItem[0].name];
+        var toCoord = geoCoordMap[dataItem[1].name];
+        if (fromCoord && toCoord) {
+            res.push([{
+                coord: fromCoord
+            }, {
+                coord: toCoord
+            }]);
+        }
+    }
+    console.log('res--',res)
+    return res;
+};
+
+
+var series = [];
+var seriesD = [];
+
+
+
+var color = ['#ff9800', '#ff9800', 'red'];
+[
+    ['济南市', BJData],
+    ['济南市', SHData],
+    ['济南市', GZData]
+].forEach(function(item, i) {
+    seriesD.push(
+    {
+        name: ' 分公司',
+        type: 'lines',
+        zlevel: 1,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.7,
+            color: '#fff',
+            symbolSize: 3
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 0,
+                curveness: 0.2
+            }
+        },
+        data: convertData(item[1])
+    }, {
+        name: ' 分公司',
+        type: 'lines',
+        zlevel: 2,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: planePath,
+            symbolSize: 15
+        },
+        lineStyle: {
+            normal: {
+                color: color[i],
+                width: 1,
+                opacity: 0.4,
+                curveness: 0.2
+            }
+        },
+        data: convertData(item[1])
+    }, {
+        name: ' 分公司',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            normal: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: function(val) {
+            return val[2] / 8;
+        },
+        itemStyle: {
+            normal: {
+                color: color[i]
+            }
+        },
+        data: item[1].map(function(dataItem) {
+            return {
+                name: dataItem[1].name,
+                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+            };
+        })
+    }
+
+    );
+});
+ 
+ series.push(
+    {
+        name: '冷链仓储分布',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            emphasis: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: 10,
+        showEffectOn: 'render',
+        itemStyle: {
+            normal: {
+                color: '#46bee9'
+            }
+        },
+        data: data2
+    },
+    {
+        name: "高风险食品安全分布",
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            emphasis: {
+                show: true,
+                position: 'right',
+                formatter: '{b}'
+            }
+        },
+        symbolSize: 10,
+        showEffectOn: 'render',
+        zlevel: 2,
+        itemStyle: {
+            normal: {
+                color: '#FF4500'
+            }
+        },
+        data: data2
+    },
+)
+
+option = {
+    backgroundColor: '#FFFFFF',
+    title: {
+        text: '货运管家各地分公司地址',
+        subtext: '数据为预想数据',
+        left: 'center',
+        textStyle: {
+            color: '#808080',
+            size: '20px'
+        }
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        top: 'bottom',
+        left: 'right',
+        data: [
+        '总公司',
+        '分公司',
+        '分公司',
+        {
+            name: "冷链仓储分布",
+            icon: "circle",
+            textStyle: {
+                color: "#a9d6fa"
+            }
+        },
+        {
+            name: "高风险食品安全分布",
+            icon: "circle",
+            textStyle: {
+                color: "#a9d6fa"
+            }
+        },
+        ],
+        textStyle: {
+            color: '#fff'
+        },
+        selectedMode: 'single'
+    },
+    geo: {
+        map: 'shandongData',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#FFFAF0',
+                borderColor: '#191970'
+            },
+            emphasis: {
+                areaColor: '#F5F5F5'
+            }
+        },
+        regions: [{
+		    name: '济南市',
+		    itemStyle: {
+		        areaColor: '#ff9800',
+		        color: '#ff9800'
+		    }
+		}],
+    },
+
+    series: series
+};
+myChart.setOption(option);
+
+</script>
+<style>
+body{background: #333;}
+</style>
+</html>
